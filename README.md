@@ -12,7 +12,7 @@ Projects:
 
 
 ## Notes
-MyControlsSDK and MyControlsNative performs a post-build step that copies the generated files into a temporary ExtensionSDK layouyt. This is useful for testing the SDK, and is used by `TestApp.SDKReference`
+MyControlsSDK and MyControlsNative performs a post-build step that copies the generated files into a temporary ExtensionSDK layout. This is useful for testing the SDK, and is used by `TestApp.SDKReference`
 
 To build the `VSIX` project, make sure you have built the release build for x86, x64 and ARM for the two SDK projects and the .design project (x86) first.
 
