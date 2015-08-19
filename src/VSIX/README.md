@@ -1,0 +1,1 @@
+To build this project, make sure you have built the SDK for both ARM, x86 and x64 (release) first.

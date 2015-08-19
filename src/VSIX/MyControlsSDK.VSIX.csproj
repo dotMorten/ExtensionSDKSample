@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{47BE7B29-A3D7-44FF-903B-97B5D408FAB8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyControlsSDK.VSIX</RootNamespace>
+    <AssemblyName>MyControlsSDK_WindowsUniversalApps</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\setup\release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployExtension>False</DeployExtension>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\MyControlsNative\bin\ARM\Release\MyControlsNative.dll">
+      <Link>Redist\CommonConfiguration\ARM\MyControlsNative.dll</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsNative\bin\Win32\Release\MyControlsNative.dll">
+      <Link>Redist\CommonConfiguration\x86\MyControlsNative.dll</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsNative\bin\x64\Release\MyControlsNative.dll">
+      <Link>Redist\CommonConfiguration\x64\MyControlsNative.dll</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK.Design\bin\Release\MyControlsSDK.Design.dll">
+      <Link>DesignTime\CommonConfiguration\x86\MyControlsSDK.Design.dll</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\ARM\Release\MyControlsSDK.dll">
+      <Link>References\CommonConfiguration\ARM\MyControlsSDK.dll</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\ARM\Release\MyControlsSDK.XML">
+      <Link>References\CommonConfiguration\ARM\MyControlsSDK.XML</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x64\Release\MyControlsSDK.dll">
+      <Link>References\CommonConfiguration\x64\MyControlsSDK.dll</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x64\Release\MyControlsSDK.XML">
+      <Link>References\CommonConfiguration\x64\MyControlsSDK.XML</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x86\Release\MyControlsSDK.dll">
+      <Link>References\CommonConfiguration\x86\MyControlsSDK.dll</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x86\Release\MyControlsSDK.XML">
+      <Link>References\CommonConfiguration\x86\MyControlsSDK.XML</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x86\Release\MyControlsSDK\Assets\Logo.scale-100.png">
+      <Link>Redist\CommonConfiguration\neutral\MyControlsSDK\Assets\Logo.scale-100.png</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x86\Release\MyControlsSDK\Assets\Logo.scale-150.png">
+      <Link>Redist\CommonConfiguration\neutral\MyControlsSDK\Assets\Logo.scale-150.png</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x86\Release\MyControlsSDK\MyControlsSDK.xr.xml">
+      <Link>Redist\CommonConfiguration\neutral\MyControlsSDK\MyControlsSDK.xr.xml</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x86\Release\MyControlsSDK\Properties\MyControlsSDK.rd.xml">
+      <Link>Redist\CommonConfiguration\neutral\MyControlsSDK\Properties\MyControlsSDK.rd.xml</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="SDKManifest.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WinUWPSDK_200x200.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="WinUWPSDK_32x32.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="License.rtf">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsNative\bin\Win32\Release\MyControlsNative.pri">
+      <Link>Redist\CommonConfiguration\neutral\MyControlsNative.pri</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsNative\bin\Win32\Release\MyControlsNative.winmd">
+      <Link>References\CommonConfiguration\neutral\MyControlsNative.winmd</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MyControlsSDK\bin\x86\Release\MyControlsSDK.pri">
+      <Link>Redist\CommonConfiguration\neutral\MyControlsSDK.pri</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\SDK\Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xbf">
+      <Link>Redist\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xbf</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\MyControlsSDK\Themes\Generic.xaml">
+      <Link>DesignTime\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FileList
+  TargetPlatform="UAP"
+  SDKType="External"
+  TargetPlatformMinVersion="10.0.0.0"
+  TargetPlatformVersion="10.0.10240.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="SDKManifest.xsd"
+  DisplayName="MyControls for Universal apps" 
+  ProductFamilyName="MyControlsSDK"
+  Description="MyControls for Universal apps"
+  MinVSVersion="14.0"
+  Identity="MyControls, Version=1.0.0"
+  MinToolsVersion="14.0" 
+  AppliesTo="WindowsAppContainer + (CSharp | Managed | VB | WindowsXAML)"
+  DependsOn="Microsoft.VCLibs, version=14.0"
+  SupportedArchitectures="x86;x64;ARM"
+  SupportsMultipleVersions="Error">
+ 	<File Reference="MyControlsNative.winmd" Implementation="MyControlsNative.dll" /> 
+	<File Reference="MyControlsSDK.dll">
+		<ToolboxItems BlendCategory="MyStuff" VSCategory="MyStuff" >
+			<Item Type="MyControlsSDK.MyCustomControl" />
+		</ToolboxItems>
+  </File>
+</FileList>

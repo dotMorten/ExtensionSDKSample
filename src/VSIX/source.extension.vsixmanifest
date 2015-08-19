@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+	<Metadata>
+		<Identity Id="MyControlsSDK.Universal" Version="1.0.0" Language="en-US" Publisher="Morten Nielsen" />
+		<DisplayName>MyControls SDK for Universal App Platform</DisplayName>
+		<Description xml:space="preserve">My Controls SDK for Universal Apps</Description>
+		<License>License.rtf</License>
+		<Icon>WinUWPSDK_32x32.png</Icon>
+		<PreviewImage>WinUWPSDK_200x200.png</PreviewImage>
+		<Tags>Reproducer app</Tags>
+	</Metadata>
+	<Installation Scope="Global" AllUsers="true">
+		<InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows" TargetPlatformVersion="v10.0" SdkName="MyControlsSDK" SdkVersion="1.0.0" />
+	</Installation>
+	<Dependencies>
+		<Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.5" />
+	</Dependencies>
+	<Assets>
+	</Assets>
+</PackageManifest>
