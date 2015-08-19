@@ -36,6 +36,7 @@ Also: The VSIX specifies the Target Platform Identifier as `Windows`, where the 
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\x86\MyControlsNative.dll
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\ARM\MyControlsNative.dll
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\References\CommonConfiguration\neutral\MyControlsNative.winmd
+\Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\References\CommonConfiguration\neutral\MyControlsNative.xml
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\References\CommonConfiguration\ARM\MyControlsSDK.dll
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\References\CommonConfiguration\ARM\MyControlsSDK.xml
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\References\CommonConfiguration\x64\MyControlsSDK.dll
@@ -49,5 +50,5 @@ Here's the gist of the folders though:
 - `design` : These are files used by the Visual Studio designer. None of these are actually going into the app. In this case we have a DLL to provide extra design time metadata about the control, and the uncompiled control template for the controls.
 - `redist` : These files are resources and native dlls that should just be xcopy-deployed to generated application layout.
 - `References` : These are files that should be added as a reference. Ie this is what gives you intellisense, tells the compilers what methods are available etc. For .NET libraries this is both the DLL binary + the metadata inside it. For C++ it's just the .winmd file with the metadata - the C++ binary is copied using the `redist` folder (.NET libraries are binary + .winmd file in one). We also add the .xml documentation for DLLs here so we get code summary in intellisense.
-- `neutral` : When something is specified as `neutral` it means 'use/deploy these files regardless of CPU architecture. Images, AnyCPU libraries, .winmd files etc are all platform neutral.
-- `x86`,`x64`,`ARM` : Files in these folders are only used based on the active CPU architecture. Typically binaries compiled for the specific architecture. 
+- `neutral` : When something is specified as `neutral` it means 'use/deploy these files regardless of CPU architecture'. Images, AnyCPU libraries, .winmd files etc are all platform neutral and goes in here.
+- `x86`,`x64`,`ARM` : Files in these folders are only used based on the active CPU architecture. This is typically binaries compiled for the specific architecture. 
