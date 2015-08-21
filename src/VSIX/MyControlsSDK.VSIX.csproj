@@ -117,8 +117,8 @@
       <Link>Redist\CommonConfiguration\neutral\MyControlsSDK.pri</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\SDK\Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xbf">
-      <Link>Redist\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xbf</Link>
+    <Content Include="..\MyControlsSDK\bin\x86\Release\MyControlsSDK\Themes\Generic.xaml">
+      <Link>Redist\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xaml</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
@@ -128,7 +128,6 @@
   <ItemGroup>
     <Content Include="..\MyControlsSDK\Themes\Generic.xaml">
       <Link>DesignTime\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

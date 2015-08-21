@@ -163,11 +163,8 @@ ECHO copying .pri resource
 xcopy "$(ProjectPriFullPath)" "%25output%25Redist\CommonConfiguration\neutral\" /Y /F
 ECHO copying library layout for redistribution
 xcopy "$(TargetDir)$(TargetName)\*.*" "%25output%25Redist\CommonConfiguration\neutral\$(TargetName)\" /Y /F /S
-ECHO moving Generic.xaml from redist to design folder
-xcopy "%25output%25Redist\CommonConfiguration\neutral\$(TargetName)\Themes\Generic.xaml" "%25output%25DesignTime\CommonConfiguration\neutral\$(TargetName)\Themes\" /Y /F
-del "%25output%25Redist\CommonConfiguration\neutral\$(TargetName)\Themes\Generic.xaml" /F /Q
-ECHO copying Generic.xbf compiled themes file
-xcopy "$(ProjectDir)$(IntermediateOutputPath)Themes\Generic.xbf" "%25output%25Redist\CommonConfiguration\neutral\$(TargetName)\Themes\" /Y /F</PostBuildEvent>
+ECHO copy Generic.xaml from redist to design folder
+xcopy "%25output%25Redist\CommonConfiguration\neutral\$(TargetName)\Themes\Generic.xaml" "%25output%25DesignTime\CommonConfiguration\neutral\$(TargetName)\Themes\" /Y /F</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
