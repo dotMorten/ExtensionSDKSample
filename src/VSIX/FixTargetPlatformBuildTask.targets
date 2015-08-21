@@ -20,7 +20,6 @@
                 <![CDATA[
                 try {
                     Success = false;
-                    InputFilename = InputFilename.Replace(".dll", ".vsix");
                     if (!System.IO.File.Exists(InputFilename)) 
                     {
                         Log.LogError("File '{0}' not found", InputFilename);
@@ -62,6 +61,6 @@
         </Task>
     </UsingTask>
     <Target Name="FixTargetPlatformBuildTask" AfterTargets="AfterBuild">
-        <FixTargetPlatformBuildTask InputFilename="$(TargetPath)" />
+        <FixTargetPlatformBuildTask InputFilename="$(OutDir)$(TargetName).vsix" />
     </Target>
 </Project>
