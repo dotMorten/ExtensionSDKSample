@@ -131,6 +131,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.VCLibs, version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
     <SDKReference Include="MyControlSDK, Version=1.0.0">
       <Name>MyControls for Universal apps</Name>
     </SDKReference>
