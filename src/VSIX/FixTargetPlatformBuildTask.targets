@@ -6,8 +6,8 @@
 -->
 
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	
-	<UsingTask TaskName="FixTargetPlatformBuildTask" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    
+    <UsingTask TaskName="FixTargetPlatformBuildTask" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
         <ParameterGroup>
             <InputFilename ParameterType="System.String" Required="true" />
         </ParameterGroup>
@@ -19,50 +19,49 @@
             <Code Type="Fragment" Language="cs">
                 <![CDATA[
                 try {
-					InputFilename = InputFilename.Replace(".dll", ".vsix");
-					Success = false;
+                    Success = false;
+                    InputFilename = InputFilename.Replace(".dll", ".vsix");
                     if (!System.IO.File.Exists(InputFilename)) 
-					{
-	                    Log.LogError("File '{0}' not found", InputFilename);
-					}
-					else
-					{
-						Log.LogMessage("Fixing TargetPlatformIdentifier in vsixmanifest");
-						using (var fs = System.IO.File.Open(InputFilename, System.IO.FileMode.Open))
-						{
-							using (var za = new ZipArchive(fs, ZipArchiveMode.Update))
-							{
-								var entry = za.GetEntry("extension.vsixmanifest");
-								using (var manifest = entry.Open())
-								{
-									using (var sr = new System.IO.StreamReader(manifest))
-									{
-										var content = sr.ReadToEnd();
-										content = content
-											.Replace("TargetPlatformIdentifier=\"Windows\"", "TargetPlatformIdentifier=\"Windows Kits\"")
-											.Replace("TargetPlatformVersion=\"v10.0\"", "TargetPlatformVersion=\"10\"");
-										manifest.Seek(0, System.IO.SeekOrigin.Begin);
-										using (var sw = new System.IO.StreamWriter(manifest))
-										{
-											sw.Write(content);
-										}
-									}
-								}
-							}
-						}
-						Success = true;
-					}					
+                    {
+                        Log.LogError("File '{0}' not found", InputFilename);
+                    }
+                    else
+                    {
+                        Log.LogMessage("Fixing TargetPlatformIdentifier in vsixmanifest");
+                        using (var fs = System.IO.File.Open(InputFilename, System.IO.FileMode.Open))
+                        {
+                            using (var za = new ZipArchive(fs, ZipArchiveMode.Update))
+                            {
+                                var entry = za.GetEntry("extension.vsixmanifest");
+                                using (var manifest = entry.Open())
+                                {
+                                    using (var sr = new System.IO.StreamReader(manifest))
+                                    {
+                                        var content = sr.ReadToEnd();
+                                        content = content
+                                            .Replace("TargetPlatformIdentifier=\"Windows\"", "TargetPlatformIdentifier=\"Windows Kits\"")
+                                            .Replace("TargetPlatformVersion=\"v10.0\"", "TargetPlatformVersion=\"10\"");
+                                        manifest.Seek(0, System.IO.SeekOrigin.Begin);
+                                        using (var sw = new System.IO.StreamWriter(manifest))
+                                        {
+                                            sw.Write(content);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        Success = true;
+                    }                    
                 }
                 catch (Exception ex)
-				{
+                {
                     Log.LogErrorFromException(ex);
                 }
             ]]>
             </Code>
         </Task>
     </UsingTask>
-	<Target Name="FixTargetPlatformBuildTask"
-					AfterTargets="AfterBuild">
-		<FixTargetPlatformBuildTask InputFilename="$(TargetPath)" />
-	</Target>
+    <Target Name="FixTargetPlatformBuildTask" AfterTargets="AfterBuild">
+        <FixTargetPlatformBuildTask InputFilename="$(TargetPath)" />
+    </Target>
 </Project>
