@@ -16,7 +16,7 @@ MyControlsSDK and MyControlsNative performs a post-build step that copies the ge
 
 To build the `VSIX` project, make sure you have built the release build for x86, x64 and ARM for the two SDK projects and the .design project (x86) first.
 
-Also: The VSIX specifies the Target Platform Identifier as `Windows`, where the correct for Universal apps SDKs are `Windows Kits`. However due to a VS bug, this TPI isn't available and if you try and manually enter it, the build will fail. Instead you must unzip the generated VSIX, manually edit it, and zip it up again.
+Also: The VSIX specifies the Target Platform Identifier as `Windows`, where the correct for Universal apps SDKs are `Windows Kits`. However due to a VS bug, this TPI isn't available and if you try and manually enter it, the build will fail. Instead you must unzip the generated VSIX, manually edit it, and zip it up again. In this sample a BuildTask is included that does this automatically. See the file `src\VSIX\FixTargetPlatformBuildTask.targets`.
 
 ## Generated ExtensionSDK Layout
 ```

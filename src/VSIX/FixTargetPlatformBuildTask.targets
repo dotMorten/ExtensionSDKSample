@@ -1,0 +1,68 @@
+﻿<!--
+// This task fixes the TargetPlatformIdentifier and TargetPlatformVersion in the extension.vsixmanifest in order
+// for the VSIX to install in the correct location for a Windows 10 Universal app - this is because
+// you can't currently pick the correct TPI in the Visual Studio Extension SDK, so we work around it by
+// fixing it post-build.
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	
+	<UsingTask TaskName="FixTargetPlatformBuildTask" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+        <ParameterGroup>
+            <InputFilename ParameterType="System.String" Required="true" />
+        </ParameterGroup>
+        <Task>
+            <Reference Include="System.Core" />
+            <Reference Include="System.IO.Compression" />
+            <Using Namespace="System" />
+            <Using Namespace="System.IO.Compression" />
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+                try {
+					InputFilename = InputFilename.Replace(".dll", ".vsix");
+					Success = false;
+                    if (!System.IO.File.Exists(InputFilename)) 
+					{
+	                    Log.LogError("File '{0}' not found", InputFilename);
+					}
+					else
+					{
+						Log.LogMessage("Fixing TargetPlatformIdentifier in vsixmanifest");
+						using (var fs = System.IO.File.Open(InputFilename, System.IO.FileMode.Open))
+						{
+							using (var za = new ZipArchive(fs, ZipArchiveMode.Update))
+							{
+								var entry = za.GetEntry("extension.vsixmanifest");
+								using (var manifest = entry.Open())
+								{
+									using (var sr = new System.IO.StreamReader(manifest))
+									{
+										var content = sr.ReadToEnd();
+										content = content
+											.Replace("TargetPlatformIdentifier=\"Windows\"", "TargetPlatformIdentifier=\"Windows Kits\"")
+											.Replace("TargetPlatformVersion=\"v10.0\"", "TargetPlatformVersion=\"10\"");
+										manifest.Seek(0, System.IO.SeekOrigin.Begin);
+										using (var sw = new System.IO.StreamWriter(manifest))
+										{
+											sw.Write(content);
+										}
+									}
+								}
+							}
+						}
+						Success = true;
+					}					
+                }
+                catch (Exception ex)
+				{
+                    Log.LogErrorFromException(ex);
+                }
+            ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+	<Target Name="FixTargetPlatformBuildTask"
+					AfterTargets="AfterBuild">
+		<FixTargetPlatformBuildTask InputFilename="$(TargetPath)" />
+	</Target>
+</Project>
