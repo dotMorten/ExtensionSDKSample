@@ -1,1 +1,3 @@
 To build this project, make sure you have built the SDK for both ARM, x86 and x64 (release) first.
+
+The manifest file specifies that the Target Platform Identifier is `Windows`, and the Target Platform Version is `v10.0`. However this is incorrect for Windows Universal apps, which should be `Windows Kits` and `10`. Unfortunately these values aren't allowed by the VSIX compiler (bug?), so instead we compile with the incorrect values and fix it after the build by unzipping the VSIX, changing the values in the manifest and zipping it all back up again. This is all automatically accomplished during build time with the `FixTargetPlatformBuildTask.targets` that contains a build task that performs this operation.
