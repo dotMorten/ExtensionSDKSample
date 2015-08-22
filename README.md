@@ -31,7 +31,7 @@ Also: The VSIX specifies the Target Platform Identifier as `Windows`, where the 
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\neutral\MyControlsSDK\Assets\Logo.scale-100.png
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\neutral\MyControlsSDK\Assets\Logo.scale-150.png
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\neutral\MyControlsSDK\Properties\MyControlsSDK.rd.xml
-\Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xbf
+\Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\neutral\MyControlsSDK\Themes\Generic.xaml
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\x64\MyControlsNative.dll
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\x86\MyControlsNative.dll
 \Windows Kits\10\ExtensionSDKs\MyControlSDK\1.0.0\Redist\CommonConfiguration\ARM\MyControlsNative.dll
